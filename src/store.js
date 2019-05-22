@@ -20,7 +20,7 @@ export default new Vuex.Store({
   mutations: {
     setCurrentUser(state, val) {
             state.currentUser = val
-            console.log("currentUser vuex store'da commitlendi :"+state.currentUser.email)
+            console.log("currentUser vuex store'da commitlendi :"+state.currentUser)
         }
   },
   actions: {

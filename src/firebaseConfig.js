@@ -18,14 +18,15 @@ firebase.initializeApp(config)
 const db = firebase.firestore()
 const auth = firebase.auth()
 var currentUser = null
+var cfg_test = "CFG test firebaseconfig'den alındı tebrikler-"
 
 // https://firebase.google.com/docs/auth/web/manage-users
-firebase.auth().onAuthStateChanged(function(user) {
+auth.onAuthStateChanged(function(user) {
   if (user) {
-    console.log("--FB Kullanıcı Giriş Yaptı--")
+    console.log("--FB Kullanıcı Giriş Yaptı veya Yapmış Gözüküyor--")
     store.commit('setCurrentUser', user)
   } else {
-    console.log("--FB Kullanıcı Giriş Yapmamış Gözüküyor--")
+    console.log("--FB Kullanıcı Çıkış Yaptı Ya da Giriş Yapmamış Gözüküyor--")
     store.commit('setCurrentUser', null)
   }
 });
@@ -33,8 +34,8 @@ firebase.auth().onAuthStateChanged(function(user) {
 // firebase collections
 //const usersCollection = db.collection('users')
 export {
-
     db,
     auth,
-    currentUser
+    currentUser,
+		cfg_test
 }

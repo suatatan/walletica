@@ -9,18 +9,13 @@
     <div v-else>
 
       <div id="login"  >
-
+        <br>
         <div class="box">
-          <p>Giriş yapmanız gerekiyor.</p>
-          <b>Gmail Adresinizle giriş yapabilirsiniz</b>
+          <p>Giriş yapmanız gerekiyor. Mevcut Google Adresinizle giriş yapabilirsiniz</p>
           <br>
           <button type="button" name="button" @click="login" class="button is-info">Giriş Yap</button>
         </div>
-
-        <div class="box">
-          <p>AtanFinans uygulaması ile giderlerinizi cep telefonu veya bilgisarınızdan kayıt altına alın.</p>
-        </div>
-
+        
       </div>
     </div>
 
@@ -31,7 +26,6 @@
 
 import firebase from 'firebase'
 import { mapState } from 'vuex'
-import { mapMutations } from 'vuex'
 
   export default {
     name: 'Login',
