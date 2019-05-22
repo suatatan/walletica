@@ -22,6 +22,7 @@
     "@vue/cli-service": "^3.7.0",
     "sass": "^1.18.0",
     "sass-loader": "^7.1.0",
+    "vue-cli-plugin-pug": "^1.0.7",
     "vue-template-compiler": "^2.5.21"
   }
 }
