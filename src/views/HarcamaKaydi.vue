@@ -80,7 +80,7 @@ export default {
       this.kayitBasariliMi = true
     },
     harcama_kaydet() {
-      var db = this.$store.state.db
+      var state = this.$store.state
 
       var yollanacak_data={
         tutar: this.tutar,
@@ -91,15 +91,11 @@ export default {
         user_uid: this.mevcutKullanici_uid,
         tarih:  new Date()
       }
+      if(yevmiye_ekle(state,yollanacak_data)){
+        this.sonuc_goster()
+      }
 
-      db.collection("harcama_kartlari/"+this.mevcutKullanici_email+"/harcamalar").add(yollanacak_data).then(doc => {
-                        console.log("Document written with ID: ", doc.id);
-                    }).then(() => {
-                        this.sonuc_goster()
-                    }).catch(err => {
-                        console.log(err)
-                        alert("Bir hata oluştu:"+err)
-                    })
+
     }
   }
 }
