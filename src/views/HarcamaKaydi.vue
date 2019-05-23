@@ -1,10 +1,10 @@
 <template lang="pug">
 div.content
-  h1 Aylık Harcamalar
+  h1 Harcama Kaydı
 </template>
 
 <script>
 export default {
-    name: "Harcamalar"
+    name: "HarcamaKaydi"
 }
 </script>
