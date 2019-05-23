@@ -45,7 +45,7 @@ var harcama_karti = {
   },
 
   yevmiye_ekle(state,yollanacak_data){
-        statedb.collection("harcama_kartlari/" + state.currentUser.email + "/harcamalar").add(yollanacak_data).then(doc => {
+        state.db.collection("harcama_kartlari/" + state.currentUser.email + "/harcamalar").add(yollanacak_data).then(doc => {
           console.log("Yevmiye kaydı eklendi ID: ", doc.id);
         }).then(() => {
           //this.sonuc_goster()
@@ -56,11 +56,19 @@ var harcama_karti = {
         })
   },
 
-  yevmiye_listele(state){
+  yevmiye_listele(state,cariAy=null,cariYil=null){
     console.log("Yevmiye listele çalıştırıldı")
 
     let list = []
+    let d = new Date();
+    cariAy = cariAy == null ? d.getMonth() : cariAy
+    cariYil = cariYil == null ? d.getFullYear() : cariYil
+    var baslangic = new Date(cariYil,cariAy,1)
+    var bitis = new Date(cariYil,cariAy,31)
     let query = state.db.collection("harcama_kartlari/"+state.currentUser.email+"/harcamalar")
+    query = query.where("tarih",">=",baslangic)
+    query = query.where("tarih","<=",bitis)
+    query = query.orderBy("tarih","desc")
     query = query.limit(150).get()
     query.then(function(querySnapshot) {
               querySnapshot.forEach(function(doc) {

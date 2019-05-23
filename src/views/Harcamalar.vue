@@ -32,7 +32,7 @@ export default {
     },
     created() {
       console.log("Harcamalar modülü => created")
-      this.list = harcama_karti.yevmiye_listele(this.$store.state)
+      this.list = harcama_karti.yevmiye_listele(this.$store.state,11)
       console.log(this.list)
     },
     filters: {

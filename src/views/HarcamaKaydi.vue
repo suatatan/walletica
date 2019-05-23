@@ -47,13 +47,7 @@
 </template>
 
 <script>
-//TODO BOOKMARK: Kaydetme fonksiyonunu eski versiyondan al OK
-//TODO: Kaydetmeye kullanıcı ekle OK
-//TODO: Veritabanını kuralları
-//TODO: Harcama kayıtlarını göster OK
-//import firebase from 'firebase'
-
-
+import harcama_karti from '@/myjs/harcama_karti'
 export default {
   name: 'HarcamaEkle',
   data(){
@@ -91,7 +85,7 @@ export default {
         user_uid: this.mevcutKullanici_uid,
         tarih:  new Date()
       }
-      if(yevmiye_ekle(state,yollanacak_data)){
+      if(harcama_karti.yevmiye_ekle(state,yollanacak_data)){
         this.sonuc_goster()
       }
 
