@@ -1,24 +1,29 @@
 <template lang="pug">
-div.content
-  h1 Aylık Harcamalar
-  div#tarih_degisim.box
-    b Ay:
-      input(v-model="insanAy",type="number",v-on:change="tarihe_git")
-    b Yil:
-      input(v-model="cariYil",type="number",v-on:change="tarihe_git")
-  table
-    tr
-      th Açıklama
-      th Ödeme Tipi
-      th Kategori
-      th Tutar
-      th Tarih
-    tr(v-for="kayit in list")
-      td {{kayit.aciklama}}
-      td {{kayit.odeme_tipi}}
-      td {{kayit.kategori}}
-      td {{kayit.tutar}}
-      td {{kayit.tarih|formatDate}}
+div.panel
+  div#bas.panel-heading
+    h1 Aylık Harcamalar
+  div#boyun.panel-block
+    div.columns
+      div.column
+        label.label Ay:
+          div.control
+            input(v-model="insanAy",type="number",v-on:change="tarihe_git",class="input")
+      div.column
+        label.label Yıl:
+          div.control
+            input(v-model="cariYil",type="number",v-on:change="tarihe_git",class="input")
+  div#govde.panel-block
+    table.table
+      tr
+        th Açıklama
+        th Ödeme Tipi
+        th Tutar
+        th Tarih
+      tr(v-for="kayit in list")
+        td {{kayit.aciklama}} ({{kayit.kategori}})
+        td {{kayit.odeme_tipi}}
+        td {{kayit.tutar}}
+        td {{kayit.tarih|formatDate}}
 </template>
 
 <script>
@@ -36,7 +41,7 @@ export default {
         // cariAy:  d.getMonth() , //null değer mevcut ayı gösterir
         cariYil: d.getFullYear(), //null değer mevcut yılı gösterir,
         insanAy: d.getMonth()+1,
-        list: []
+        list: null
       }
     },
     methods: {
@@ -66,3 +71,10 @@ export default {
 
 }
 </script>
+
+<style lang="scss">
+$parmakboy: 75px;
+.kinput{
+  width: $parmakboy
+}
+</style>
