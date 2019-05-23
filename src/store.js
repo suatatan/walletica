@@ -13,8 +13,6 @@ export default new Vuex.Store({
   state: {
         db: db,
         currentUser: null,
-        cariAy: d.getMonth(),
-        cariYil: d.getFullYear(),
         harcamalar: [],
         toplam_harcama:0,
         kategorikDagilim: []

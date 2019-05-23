@@ -2,8 +2,8 @@
   <div>
     <br>
     <div class="box" v-show="!kayitBasariliMi">
-      <h2 class="title">Gider Ekle</h2>
-    <form  action="index.html" method="post">
+        <h2 class="title">Gider Ekle</h2>
+        <form  action="index.html" method="post">
         <input type="hidden" v-model="mevcutKullanici_email"/>
         <input type="hidden" v-model="mevcutKullanici_uid"/>
         <label class="label" for="">Tutar</label>
@@ -36,9 +36,8 @@
         <button class="button is-success" @click="harcama_kaydet"  type="button">Kaydet</button>
       </form>
     </div>
-      <div v-if="kayitBasariliMi" class="notification is primary">
-
-        {{tutar}} tutarındaki  {{aciklama}} harcamanız kaydedildi
+        <div v-if="kayitBasariliMi" class="notification is primary">
+        {{tutar}} tutarındaki  <i>{{aciklama}}</i> harcamanız kaydedildi
         <br>
         <button class="button is-info" @click="yeni_kayit">Yeni Kayıt</button>
 
