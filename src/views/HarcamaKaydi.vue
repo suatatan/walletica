@@ -81,7 +81,8 @@ export default {
     },
     harcama_kaydet() {
       var db = this.$store.state.db
-      db.collection("giderler_test").add({
+
+      var yollanacak_data={
         tutar: this.tutar,
         aciklama: this.aciklama,
         kategori: this.kategori,
@@ -89,7 +90,9 @@ export default {
         user_email: this.mevcutKullanici_email,
         user_uid: this.mevcutKullanici_uid,
         tarih:  new Date()
-      }).then(doc => {
+      }
+
+      db.collection("harcama_kartlari/"+this.mevcutKullanici_email+"/harcamalar").add(yollanacak_data).then(doc => {
                         console.log("Document written with ID: ", doc.id);
                     }).then(() => {
                         this.sonuc_goster()

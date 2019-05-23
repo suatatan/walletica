@@ -26,8 +26,8 @@ export default new Vuex.Store({
             //izah: yeni kullanıcının kayıt oluşturması durumu için kayıtlarda ona eğer yoksa hesap kartı tanımlanır
             //mevcut mu diye kontrol
             //every user must have an email
-
-            harcama_karti.ekle(state)
+            harcama_karti.yoksa_ekle(state)
+            //harcama_karti.ekle(state)
 
 
         }
