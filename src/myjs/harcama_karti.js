@@ -54,7 +54,21 @@ var harcama_karti = {
           console.log(err)
           return false
         })
+  },
+
+  yevmiye_listele(state){
+    console.log("Yevmiye listele çalıştırıldı")
+
+    let list = []
+    let query = state.db.collection("harcama_kartlari/"+state.currentUser.email+"/harcamalar")
+    query = query.limit(150).get()
+    query.then(function(querySnapshot) {
+              querySnapshot.forEach(function(doc) {
+                  list.push(doc.data())
+              });
+          });
+    return list
   }
 
-}
+}//modül sonu
 export default harcama_karti
