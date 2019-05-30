@@ -3,13 +3,14 @@
 //izah: iç metot şöyle çağrılır: harcama_karti.ekle(state)
 var harcama_karti = {
   //---- Yeni harcama kartı ekle başlangıç ---
-  ekle(state) {
+  _ekle(state) {
+    console.log("Harcama Kartı ==> Yoksa Ekle => Ekle")
     let yollanacak_data = {
       //user_email: state.currentUser.email,
-      user_uid: state.currentUser.email,
+      user_email: state.currentUser.email,
       ilk_giris: new Date()
     }
-    var doc_id = state.currentUser.email
+    var doc_id = state.currentUser.uid
     state.db.collection("harcama_kartlari").doc(doc_id).set(yollanacak_data).then(doc => {
       console.log("Yeni kullanıcı oluşturuldu: ", doc_id);
       return true
@@ -24,14 +25,15 @@ var harcama_karti = {
   },
 
   yoksa_ekle(state,) {
-        var docRef = state.db.collection("harcama_kartlari").doc(state.currentUser.email);
+        console.log("Harcama Kartı ==> Yoksa Ekle")
+        var docRef = state.db.collection("harcama_kartlari").doc(state.currentUser.uid);
         docRef.get().then(function(doc) {
           if (doc.exists) {
             console.log("Bu kullanıcı daha önce giriş yapmış o yüzden tekrar harcama kartı oluşturulmayacak", doc.data());
           } else {
             // doc.data() will be undefined in this case
             console.log("Böyle bir kullanıcı veritabanında yok! Haydi yenisini oluşturalım");
-            if(harcama_karti.ekle(state)){ // izah this bu modül içinden çağırırken de bu şekilde çağırmalısın
+            if(harcama_karti._ekle(state)){ // izah this bu modül içinden çağırırken de bu şekilde çağırmalısın
               return true
             }else{
               return false
@@ -45,7 +47,7 @@ var harcama_karti = {
   },
 
   yevmiye_ekle(state,yollanacak_data){
-        state.db.collection("harcama_kartlari/" + state.currentUser.email + "/harcamalar").add(yollanacak_data).then(doc => {
+        state.db.collection("harcama_kartlari/" + state.currentUser.uid + "/harcamalar").add(yollanacak_data).then(doc => {
           console.log("Yevmiye kaydı eklendi ID: ", doc.id);
         }).then(() => {
           //this.sonuc_goster()
@@ -65,7 +67,7 @@ var harcama_karti = {
     cariYil = cariYil == null ? d.getFullYear() : cariYil
     var baslangic = new Date(cariYil,cariAy,1)
     var bitis = new Date(cariYil,cariAy,31)
-    let query = state.db.collection("harcama_kartlari/"+state.currentUser.email+"/harcamalar")
+    let query = state.db.collection("harcama_kartlari/"+state.currentUser.uid+"/harcamalar")
     query = query.where("tarih",">=",baslangic)
     query = query.where("tarih","<=",bitis)
     query = query.orderBy("tarih","desc")
