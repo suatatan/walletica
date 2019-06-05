@@ -24,5 +24,17 @@
     "sass-loader": "^7.1.0",
     "vue-cli-plugin-pug": "^1.0.7",
     "vue-template-compiler": "^2.5.21"
-  }
+  },
+  "description": "## Project setup ``` npm install ```",
+  "main": "babel.config.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/suatatan/walletica.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/suatatan/walletica/issues"
+  },
+  "homepage": "https://github.com/suatatan/walletica#readme"
 }
